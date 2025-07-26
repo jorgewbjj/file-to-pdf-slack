@@ -1,0 +1,24 @@
+name: Upload Files to Slack
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'uploads/**'
+
+jobs:
+  convert_and_send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install reportlab requests
+      - name: Convert and send files
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        run: python convert_to_pdf.py

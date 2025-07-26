@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File to PDF Slack</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f9f9f9; color: #333; }
+    h1 { color: #2c3e50; }
+    p { line-height: 1.6; }
+    .instructions { background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    ol { margin-left: 1.5rem; }
+    code { background: #eee; padding: 0 4px; border-radius: 4px; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <h1>Upload File to Convert to PDF and Send to Slack</h1>
+  <div class="instructions">
+    <p>This website uses a GitHub Actions workflow to convert uploaded files to PDF and send them to a Slack channel. To use it:</p>
+    <ol>
+      <li>Ensure the <code>SLACK_BOT_TOKEN</code> and <code>SLACK_CHANNEL_ID</code> secrets are set in the repository’s settings.</li>
+      <li>Upload a file to the <code>uploads</code> directory of the repository. You can do this by navigating to the <code>uploads</code> folder, clicking <strong>Add file &gt; Upload files</strong>, selecting your file and committing the change to the <code>main</code> branch.</li>
+      <li>The GitHub Actions workflow will run automatically, create a PDF summary of your file, and post it to the specified Slack channel.</li>
+    </ol>
+    <p>Supported file types include text files and other documents. Binary files will include only metadata in the PDF summary.</p>
+  </div>
+</body>
+</html>
